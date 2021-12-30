@@ -11,7 +11,6 @@ public class PlayerWeapon : MonoBehaviour {
 
     private float nextFire = 0f;
 
-
     private void Update() {
         bool shouldShoot = Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
 

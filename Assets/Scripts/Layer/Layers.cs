@@ -7,5 +7,9 @@ namespace Assets.Scripts.Layer {
         public const string Player = "Player";
 
         public static int PlayerLayerId = LayerMask.NameToLayer(Player);
+
+        public const string IgnoreCollisions = "Ignore Collisions";
+        public static int IgnoreCollisionsLayerId = LayerMask.NameToLayer(IgnoreCollisions);
+
     }
 }

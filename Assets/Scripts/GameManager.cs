@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
 
     private void Respawn() {
-        this.player.gameObject.layer = LayerMask.NameToLayer("Ignore Collisions");
+        this.player.gameObject.layer = Layers.IgnoreCollisionsLayerId;
         this.player.transform.position = Vector3.zero;
         this.player.gameObject.SetActive(true);
         Invoke(nameof(TurnOnCollisions), respawnInvulnerbilityTime);

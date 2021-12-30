@@ -36,25 +36,16 @@ public class Asteriod : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Bullet") {
+        if (collision.gameObject.tag == "Bullet") { // This gets called mutliple times if multiple bullets hit at the same time
             if (this.size * 0.5f > this.minSize) {
-                CreateSplit(2);
+                // This kinda sucks but need to spawn clones outside of this
+                FindObjectOfType<AsteriodSpawner>().SpawnSplits(this.transform, size, speed, 2);
             }
 
-            Destroy(this.gameObject);
             FindObjectOfType<GameManager>().AsteriodDestroyed(this);
+            Destroy(this.gameObject);
         }
     }
 
 
-    private void CreateSplit(int splits) {
-        for (int i = 0; i < splits; i ++) {
-            Vector2 position = this.transform.position;
-            position += Random.insideUnitCircle / (float) splits;
-
-            Asteriod half = Instantiate(this, position, this.transform.rotation);
-            half.size = this.size / (float)splits;
-            half.setTrajectory(Random.insideUnitCircle.normalized * this.speed);
-        }
-    }
 }

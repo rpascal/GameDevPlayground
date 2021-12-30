@@ -33,5 +33,16 @@ public class AsteriodSpawner : MonoBehaviour {
 
     }
 
+    public void SpawnSplits(Transform transform, float originalSize, float speed, int splits) {
+        for (int i = 0; i < splits; i++) {
+            Vector2 position = transform.position;
+            position += Random.insideUnitCircle / (float)splits;
+
+            Asteriod half = Instantiate(this.asteriodPrefab, position, transform.rotation);
+            half.size = originalSize / (float)splits;
+            half.setTrajectory(Random.insideUnitCircle.normalized * speed);
+        }
+    }
+
 
 }
