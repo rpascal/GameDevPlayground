@@ -1,3 +1,5 @@
+using Assets.Scripts.Layer;
+using Assets.Scripts.Projectiles;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,12 +33,11 @@ public class Asteriod : MonoBehaviour {
 
     public void setTrajectory(Vector2 direction) {
         _rigidBody.AddForce(direction * this.speed);
-
         Destroy(this.gameObject, this.maxLifetime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Bullet") { // This gets called mutliple times if multiple bullets hit at the same time
+        if (Tags.hasTag(collision, Tags.ProjectileTag, Tags.BlueProjectileTag, Tags.RedProjectileTag, Tags.PurpleProjectileTag)) {
             if (this.size * 0.5f > this.minSize) {
                 // This kinda sucks but need to spawn clones outside of this
                 FindObjectOfType<AsteriodSpawner>().SpawnSplits(this.transform, size, speed, 2);

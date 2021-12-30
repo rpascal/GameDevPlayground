@@ -76,7 +76,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 319934205, guid: 88296693c11c8f246a727ab975ef2bd3, type: 3}
   _projectileSpawnLocation: {fileID: 3129318248748736133}
-  _shootParticle: {fileID: 0}
-  _shootSound: {fileID: 0}
-  bulletSpeed: 500
   fireRate: 0.1
