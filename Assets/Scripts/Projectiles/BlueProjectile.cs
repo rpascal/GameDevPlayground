@@ -8,7 +8,10 @@ namespace Assets.Scripts.Projectiles {
     public class BlueProjectile : BaseProjectile {
 
         private Dictionary<DamageType, float> _damageTypeMultipliers = new Dictionary<DamageType, float>() {
-            {DamageType.Normal, 2.0f }
+            {DamageType.Normal, 1.0f },
+            {DamageType.Blue, 10.0f },
+            {DamageType.Red, 0.0f },
+            {DamageType.Purple, 2.0f }
         };
 
         protected override Dictionary<DamageType, float> damageTypeMultipliers {

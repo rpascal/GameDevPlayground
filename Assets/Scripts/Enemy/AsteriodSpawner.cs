@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteriodSpawner : MonoBehaviour {
 
-    public Asteriod asteriodPrefab;
+    public Asteriod[] asteriodPrefabs;
 
     public float trajectoryVariance = 15.0f;
     public float spawnRate = 2.0f;
@@ -26,19 +26,24 @@ public class AsteriodSpawner : MonoBehaviour {
             float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
-            Asteriod asteriod = Instantiate(this.asteriodPrefab, spawnPoint, rotation);
+            Asteriod asteriod = Instantiate(randomAsteriodPrefab(), spawnPoint, rotation);
             asteriod.size = Random.Range(asteriod.minSize, asteriod.maxSize);
             asteriod.setTrajectory(rotation * -spawnDirection);
         }
 
     }
 
-    public void SpawnSplits(Transform transform, float originalSize, float speed, int splits) {
+    private Asteriod randomAsteriodPrefab() {
+        return asteriodPrefabs[Random.Range(0, asteriodPrefabs.Length)];
+    }
+
+    public void SpawnSplits(Asteriod asteriod, float originalSize, float speed, int splits) {
+        Transform transform = asteriod.transform;
         for (int i = 0; i < splits; i++) {
             Vector2 position = transform.position;
             position += Random.insideUnitCircle / (float)splits;
 
-            Asteriod half = Instantiate(this.asteriodPrefab, position, transform.rotation);
+            Asteriod half = Instantiate(asteriod, position, transform.rotation);
             half.size = originalSize / (float)splits;
             half.setTrajectory(Random.insideUnitCircle.normalized * speed);
         }

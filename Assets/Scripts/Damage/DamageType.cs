@@ -9,4 +9,6 @@ namespace Assets.Scripts.Damage {
         Purple,
         Normal
     }
+
+
 }

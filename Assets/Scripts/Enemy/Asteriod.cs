@@ -25,7 +25,7 @@ public class Asteriod : MonoBehaviour, IDamageable {
     public int health => _health;
 
 
-    private DamageType _type = DamageType.Normal;
+    [SerializeField] private DamageType _type = DamageType.Normal;
     public DamageType type => _type;
 
 
@@ -54,7 +54,7 @@ public class Asteriod : MonoBehaviour, IDamageable {
         if (health <= 0) {
             if (this.size * 0.5f > this.minSize) {
                 // This kinda sucks but need to spawn clones outside of this
-                FindObjectOfType<AsteriodSpawner>().SpawnSplits(this.transform, size, speed, 2);
+                FindObjectOfType<AsteriodSpawner>().SpawnSplits(this, size, speed, 2);
             }
 
             FindObjectOfType<GameManager>().AsteriodDestroyed(this);

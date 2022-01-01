@@ -5285,7 +5285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047684, guid: b8abfb71af49e784f8d2d7247b846960, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047704, guid: b8abfb71af49e784f8d2d7247b846960, type: 3}
       propertyPath: m_RootOrder
@@ -5647,7 +5647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047684, guid: fe011c14c033d954d98cb9441e4bd2dd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047704, guid: fe011c14c033d954d98cb9441e4bd2dd, type: 3}
       propertyPath: m_RootOrder
@@ -5949,7 +5949,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b92701ae4f2654686dda8d4a354d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteriodPrefab: {fileID: -5725159378488982746, guid: dcaa480a156f3f146a90e87f9280caae, type: 3}
+  asteriodPrefabs:
+  - {fileID: -5725159378488982746, guid: dcaa480a156f3f146a90e87f9280caae, type: 3}
+  - {fileID: 424006542280166723, guid: 1afab855189a60c4a935885a6f29cd85, type: 3}
+  - {fileID: 424006542280166723, guid: 04760dac56610da499269871da1a89dd, type: 3}
+  - {fileID: 424006542280166723, guid: 475798957296a824cb39ea4eb0fee71f, type: 3}
   trajectoryVariance: 15
   spawnRate: 2
   spawnDistance: 15

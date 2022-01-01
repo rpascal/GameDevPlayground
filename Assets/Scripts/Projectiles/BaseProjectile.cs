@@ -40,7 +40,10 @@ namespace Assets.Scripts.Projectiles {
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.TryGetComponent(out IDamageable damageable)) {
                 float multipler = 1.0f;
-                damageTypeMultipliers.TryGetValue(damageable.type, out multipler);
+                if (damageTypeMultipliers.ContainsKey(damageable.type)) {
+                    multipler = damageTypeMultipliers[damageable.type];
+                }
+
                 damageable.Damage((int)(baseAttack * multipler));
                 Destroy(this.gameObject);
             }
