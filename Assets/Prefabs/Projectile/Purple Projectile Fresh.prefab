@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8959008404541436367}
   - component: {fileID: 8959008404541436352}
   - component: {fileID: 8959008404541436353}
-  - component: {fileID: 7142273909532881723}
+  - component: {fileID: 6229169193935023566}
   m_Layer: 7
   m_Name: Purple Projectile Fresh
   m_TagString: Projectile
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7142273909532881723
+--- !u!114 &6229169193935023566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,8 +141,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8959008404541436355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25a45a7ca61380f48a818bb59f2a8684, type: 3}
+  m_Script: {fileID: 11500000, guid: 909acbf9abb60ac4f95381dd0d0c8efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _travelSpeed: 10
   maxLifetime: 5
+  _type: 2
   _baseAttack: 1

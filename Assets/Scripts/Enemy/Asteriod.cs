@@ -18,16 +18,15 @@ public class Asteriod : MonoBehaviour, IDamageable {
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidBody;
 
-    int _maxHealth = 5;
-    public int maxHealth => _maxHealth;
+    float _maxHealth = 5;
+    public float maxHealth => _maxHealth;
 
-    private int _health = 5;
-    public int health => _health;
+    private float _health = 5;
+    public float health => _health;
 
 
-    [SerializeField] private DamageType _type = DamageType.Normal;
-    public DamageType type => _type;
-
+    [SerializeField] private EntityDamageType _type = EntityDamageType.Normal;
+    public EntityDamageType type => _type;
 
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -49,7 +48,7 @@ public class Asteriod : MonoBehaviour, IDamageable {
         Destroy(this.gameObject, this.maxLifetime);
     }
 
-    public void Damage(int amount) {
+    public void Damage(float amount) {
         _health -= amount;
         if (health <= 0) {
             if (this.size * 0.5f > this.minSize) {

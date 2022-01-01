@@ -3,12 +3,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.Damage {
 
-    public enum DamageType {
+    public enum EntityDamageType {
         Red,
         Blue,
         Purple,
         Normal
     }
-
 
 }

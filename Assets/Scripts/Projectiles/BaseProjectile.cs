@@ -18,11 +18,9 @@ namespace Assets.Scripts.Projectiles {
 
         private Rigidbody2D _rb = null;
 
-        private Dictionary<DamageType, float> _defaultDamageTypeMultipliers = new Dictionary<DamageType, float>();
+        [SerializeField] private EntityDamageType _type = EntityDamageType.Normal;
+        public EntityDamageType type => _type;
 
-        protected virtual Dictionary<DamageType, float> damageTypeMultipliers {
-            get { return _defaultDamageTypeMultipliers; }
-        }
 
         [SerializeField] float _baseAttack = 1;
         protected virtual float baseAttack => _baseAttack;
@@ -39,12 +37,9 @@ namespace Assets.Scripts.Projectiles {
 
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.TryGetComponent(out IDamageable damageable)) {
-                float multipler = 1.0f;
-                if (damageTypeMultipliers.ContainsKey(damageable.type)) {
-                    multipler = damageTypeMultipliers[damageable.type];
-                }
-
-                damageable.Damage((int)(baseAttack * multipler));
+                damageable.Damage(
+                    DamageAmountCalculator.calculateDamage(type, damageable.type, baseAttack)
+                );
                 Destroy(this.gameObject);
             }
         }

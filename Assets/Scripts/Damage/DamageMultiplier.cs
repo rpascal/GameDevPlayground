@@ -5,10 +5,10 @@ namespace Assets.Scripts.Damage {
 
     public class DamageMultiplier {
 
-        public readonly DamageType type;
+        public readonly EntityDamageType type;
         public readonly float value;
 
-        public DamageMultiplier(DamageType type, float value) {
+        public DamageMultiplier(EntityDamageType type, float value) {
             this.type = type;
             this.value = value;
         }

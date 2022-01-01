@@ -4,12 +4,12 @@ using UnityEngine;
 namespace Assets.Scripts.Damage {
     public interface IDamageable {
 
-        int maxHealth { get; }
-        int health { get; }
+        float maxHealth { get; }
+        float health { get; }
 
-        DamageType type { get; }
+        EntityDamageType type { get; }
 
-        public void Damage(int amount);
+        public void Damage(float amount);
 
 
     }

@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bc735bf0bea8848af98f7648513d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4573656001170537926, guid: 11238db5591a4914aa639a2b6f288069, type: 3}
-  purpleProjectile: {fileID: 7142273909532881723, guid: b59fdf4593b70084e94db2860fd010c3, type: 3}
+  _projectilePrefab: {fileID: -5120044357081908175, guid: 11238db5591a4914aa639a2b6f288069, type: 3}
+  purpleProjectile: {fileID: 6229169193935023566, guid: b59fdf4593b70084e94db2860fd010c3, type: 3}
