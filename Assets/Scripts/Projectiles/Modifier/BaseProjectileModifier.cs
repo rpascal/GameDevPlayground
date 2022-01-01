@@ -19,6 +19,7 @@ namespace Assets.Scripts.Projectiles.Modifier {
         private void Awake() {
             GetComponent<BoxCollider2D>().isTrigger = true;
             tag = Tags.ProjectileModifierTag;
+            //GetComponent<BoxCollider2D>().isTrigger = true;
         }
 
         /**

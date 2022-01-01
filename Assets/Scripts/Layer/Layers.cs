@@ -11,5 +11,8 @@ namespace Assets.Scripts.Layer {
         public const string IgnoreCollisions = "Ignore Collisions";
         public static int IgnoreCollisionsLayerId = LayerMask.NameToLayer(IgnoreCollisions);
 
+        public const string Bullet = "Bullet";
+        public static int BulletLayerId = LayerMask.NameToLayer(Bullet);
+
     }
 }

@@ -56,21 +56,47 @@ PrefabInstance:
       value: Standard Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 7585147576051246960, guid: e2a47f879f705144db7396f8554e19d5, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7585147576051246960, guid: e2a47f879f705144db7396f8554e19d5, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8145362782585411372, guid: e2a47f879f705144db7396f8554e19d5, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7585147576051246960, guid: e2a47f879f705144db7396f8554e19d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2a47f879f705144db7396f8554e19d5, type: 3}
 --- !u!1 &7770518280994111954 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1980655647590125495, guid: e2a47f879f705144db7396f8554e19d5, type: 3}
   m_PrefabInstance: {fileID: 8118546356297944677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &319934205
+--- !u!50 &3321629416096249400
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770518280994111954}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &-721329196344521528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,3 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLifetime: 10
+  _baseAttack: 1

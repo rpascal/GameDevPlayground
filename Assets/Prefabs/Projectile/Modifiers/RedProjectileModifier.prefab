@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5004300795626047704}
   - component: {fileID: 5004300795626047707}
   - component: {fileID: 5004300795626047706}
-  - component: {fileID: 7289688145586086555}
+  - component: {fileID: 2707405588614034508}
   m_Layer: 12
   m_Name: RedProjectileModifier
   m_TagString: Projectile Modifier
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7289688145586086555
+--- !u!114 &2707405588614034508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5004300795626047684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1a01c3bd21a8944d8a890d50f3c1954, type: 3}
+  m_Script: {fileID: 11500000, guid: 77bc735bf0bea8848af98f7648513d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 3022116799207713039, guid: d706427ba92169a4289691cf375a848e, type: 3}
-  purpleProjectile: {fileID: 2186806293050766500, guid: 7331b5f5ddfb4a9498453689757900ff, type: 3}
+  _projectilePrefab: {fileID: 4573656001170537926, guid: 11238db5591a4914aa639a2b6f288069, type: 3}
+  purpleProjectile: {fileID: 7142273909532881723, guid: b59fdf4593b70084e94db2860fd010c3, type: 3}

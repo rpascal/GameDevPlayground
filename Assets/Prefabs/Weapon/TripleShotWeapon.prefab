@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fa42358c954f24b9e94b5ba9dfc5e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 319934205, guid: 88296693c11c8f246a727ab975ef2bd3, type: 3}
+  _projectile: {fileID: 8959008404541436354, guid: 006655c275cbd72458b2001d7afc49f5, type: 3}
   _projectileSpawnLocation: {fileID: 3775539227450093840}
   fireRate: 0.25
 --- !u!1 &3775539227450093843
