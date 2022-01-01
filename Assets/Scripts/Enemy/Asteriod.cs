@@ -32,7 +32,6 @@ public class Asteriod : MonoBehaviour, IDamageable {
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidBody = GetComponent<Rigidbody2D>();
-        //GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     // Start is called before the first frame update
@@ -48,18 +47,6 @@ public class Asteriod : MonoBehaviour, IDamageable {
     public void setTrajectory(Vector2 direction) {
         _rigidBody.AddForce(direction * this.speed);
         Destroy(this.gameObject, this.maxLifetime);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        //if (Tags.hasTag(collision, Tags.ProjectileTag, Tags.BlueProjectileTag, Tags.RedProjectileTag, Tags.PurpleProjectileTag)) {
-        //    if (this.size * 0.5f > this.minSize) {
-        //        // This kinda sucks but need to spawn clones outside of this
-        //        FindObjectOfType<AsteriodSpawner>().SpawnSplits(this.transform, size, speed, 2);
-        //    }
-
-        //    FindObjectOfType<GameManager>().AsteriodDestroyed(this);
-        //    Destroy(this.gameObject);
-        //}
     }
 
     public void Damage(int amount) {

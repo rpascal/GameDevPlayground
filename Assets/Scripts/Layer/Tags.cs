@@ -5,9 +5,6 @@ namespace Assets.Scripts.Layer {
     public static class Tags {
         public const string ProjectileModifierTag = "Projectile Modifier";
         public const string ProjectileTag = "Projectile";
-        public const string BlueProjectileTag = "Blue Projectile";
-        public const string RedProjectileTag = "Red Projectile";
-        public const string PurpleProjectileTag = "Purple Projectile";
 
         public static bool hasTag(Component component, string tag) {
             return component.CompareTag(tag);

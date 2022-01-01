@@ -10,9 +10,8 @@ namespace Assets.Scripts.Projectiles {
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(SpriteRenderer))]
     public abstract class BaseProjectile : MonoBehaviour {
-        private IMoveable _moveBehavior;
 
-        private float _travelSpeed = 10;
+        [SerializeField] private float _travelSpeed = 10;
         protected virtual float TravelSpeed => _travelSpeed;
 
         [SerializeField] private float maxLifetime = 5.0f;
@@ -31,13 +30,11 @@ namespace Assets.Scripts.Projectiles {
         protected virtual void Awake() {
             tag = Tags.ProjectileTag;
             _rb = GetComponent<Rigidbody2D>();
-            // establish our initial projectile movement behavior
-            _moveBehavior = new LinearMoveBehavior(_rb, TravelSpeed);
             Destroy(this.gameObject, this.maxLifetime);
         }
 
         private void FixedUpdate() {
-            _moveBehavior.Move();
+            _rb.velocity = _rb.transform.up * _travelSpeed;
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {
@@ -47,10 +44,6 @@ namespace Assets.Scripts.Projectiles {
                 damageable.Damage((int)(baseAttack * multipler));
                 Destroy(this.gameObject);
             }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision) {
-            Destroy(this.gameObject);
         }
 
         protected void Reset() {

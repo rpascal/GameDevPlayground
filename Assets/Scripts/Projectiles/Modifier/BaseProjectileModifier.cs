@@ -37,9 +37,8 @@ namespace Assets.Scripts.Projectiles.Modifier {
 
         public abstract void modifyProjectile(BaseProjectile projectile);
 
-        private void OnTriggerEnter2D(Collider2D collision) {
-            if (Tags.hasTag(collision, Tags.ProjectileTag, Tags.BlueProjectileTag, Tags.RedProjectileTag, Tags.PurpleProjectileTag)) {
-                BaseProjectile projectile = collision.GetComponent<BaseProjectile>();
+        private void OnTriggerEnter2D(Collider2D collider) {
+            if (collider.TryGetComponent<BaseProjectile>(out BaseProjectile projectile)) {
                 if (spawnedProjectiles.TryGetValue(projectile.GetInstanceID(), out float spawnTime)) {
                     float timeDifference = Time.time - spawnTime;
                     if (timeDifference >= maxTimeBeforeCanModifyAgain) {
@@ -51,9 +50,8 @@ namespace Assets.Scripts.Projectiles.Modifier {
             }
         }
 
-        private void OnTriggerExit2D(Collider2D collision) {
-            if (Tags.hasTag(collision, Tags.ProjectileTag, Tags.BlueProjectileTag, Tags.RedProjectileTag, Tags.PurpleProjectileTag)) {
-                BaseProjectile projectile = collision.GetComponent<BaseProjectile>();
+        private void OnTriggerExit2D(Collider2D collider) {
+            if (collider.TryGetComponent<BaseProjectile>(out BaseProjectile projectile)) {
                 spawnedProjectiles.Remove(projectile.GetInstanceID());
             }
         }
