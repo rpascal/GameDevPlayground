@@ -1,3 +1,4 @@
+using Assets.Scripts.Layer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,7 @@ public class AsteriodSpawner : MonoBehaviour {
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
             Asteriod asteriod = Instantiate(randomAsteriodPrefab(), spawnPoint, rotation);
-            asteriod.size = Random.Range(asteriod.minSize, asteriod.maxSize);
+            asteriod.size = Random.Range(asteriod.minSize, asteriod.maxSize); // Random size
             asteriod.setTrajectory(rotation * -spawnDirection);
         }
 
@@ -44,8 +45,15 @@ public class AsteriodSpawner : MonoBehaviour {
             position += Random.insideUnitCircle / (float)splits;
 
             Asteriod half = Instantiate(asteriod, position, transform.rotation);
-            half.size = originalSize / (float)splits;
+            half.size = originalSize / (float)splits; // todo figure out a better way
             half.setTrajectory(Random.insideUnitCircle.normalized * speed);
+        }
+    }
+
+    public void ResetForGameOver() {
+        GameObject[] asteriods = GameObject.FindGameObjectsWithTag(Tags.AsteriodTag);
+        for (int i = 0; i < asteriods.Length; i++) {
+            Destroy(asteriods[i]);
         }
     }
 

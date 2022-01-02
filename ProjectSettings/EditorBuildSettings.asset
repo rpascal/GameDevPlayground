@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Asteroids.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: cc91212753650ae4fb9db069cac0ee00
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3f09e59a70b0a754cbead3b39a1b14b3
   m_configObjects: {}

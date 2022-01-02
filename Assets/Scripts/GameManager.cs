@@ -1,7 +1,10 @@
 using Assets.Scripts.Layer;
+using Assets.Scripts.Score;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -9,28 +12,24 @@ public class GameManager : MonoBehaviour {
 
     public ParticleSystem explosion;
 
-    public Canvas canvas;
-
     public int lives = 3;
 
     public float respawnTime = 3.0f;
     public float respawnInvulnerbilityTime = 3.0f;
 
-    public int score = 0;
+    [SerializeField] private ScoreManager scoreManager;
+
+    [SerializeField] private AsteriodSpawner asteriodSpawner;
+    [SerializeField] private Text livesText;
+    [SerializeField] private Text immortalityText;
+
+    private void Start() {
+        this.immortalityText.gameObject.SetActive(false);
+    }
 
     public void AsteriodDestroyed(Asteriod asteriod) {
         this.explosion.transform.position = asteriod.transform.position;
         this.explosion.Play();
-
-        
-        if (asteriod.size < 0.75f) {
-            score += 100;
-        } else if (asteriod.size < 1.2f) {
-            score += 50;
-        } else {
-            score += 25;
-        }
-        
     }
 
     public void PlayerDied() {
@@ -38,6 +37,7 @@ public class GameManager : MonoBehaviour {
         this.explosion.transform.position = this.player.transform.position;
         this.explosion.Play();
         this.lives--;
+        updateLivesText();
 
         if (this.lives <= 0) {
             GameOver();
@@ -46,21 +46,26 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
     private void Respawn() {
         this.player.gameObject.layer = Layers.IgnoreCollisionsLayerId;
         this.player.transform.position = Vector3.zero;
         this.player.gameObject.SetActive(true);
+        this.immortalityText.gameObject.SetActive(true);
+        this.immortalityText.text = $"Immortal for {this.respawnInvulnerbilityTime} sec";
         Invoke(nameof(TurnOnCollisions), respawnInvulnerbilityTime);
     }
 
     private void TurnOnCollisions() {
         this.player.gameObject.layer = Layers.PlayerLayerId;
+        this.immortalityText.gameObject.SetActive(false);
     }
 
     private void GameOver() {
-        this.lives = 3;
-        this.score = 0;
+        SceneManager.LoadScene("GameOver");
+    }
+
+    private void updateLivesText() {
+        this.livesText.text = $"{lives} Lives";
     }
 
 }
