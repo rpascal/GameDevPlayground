@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public float thrustSpeed = 1.0f;
-    public float turnSpeed = 1.0f;
-
-    public float rotationSpeed = 5.0f;
+    [SerializeField] private float thrustSpeed = 3.0f;
+    [SerializeField] private float turnSpeed = 0.25f;
 
     private bool _thrusting;
     private float _turnDirection;
@@ -17,38 +15,32 @@ public class Player : MonoBehaviour {
     }
 
     private void Start() {
-        _rigidBody.freezeRotation = true;
     }
 
     // Update is called once per frame
     private void Update() {
-        _thrusting = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-
-        bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
-        bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
-
-        if (left) {
+        _thrusting = Input.GetAxis("Vertical") > 0.0f; // Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        var horizontalAxis = Input.GetAxis("Horizontal");
+        if (horizontalAxis < 0) {
             _turnDirection = 1.0f;
-        } else if (right) {
+        } else if(horizontalAxis > 0) {
             _turnDirection = -1.0f;
         } else {
             _turnDirection = 0.0f;
         }
-
     }
 
     private void FixedUpdate() {
-
-
         if (_thrusting) {
             _rigidBody.AddForce(this.transform.up * this.thrustSpeed);
         }
 
-        //if (_turnDirection != 0.0f) {
-        //    _rigidBody.AddTorque(_turnDirection * this.turnSpeed);
-        //}
-
+        if (_turnDirection != 0.0f) {
+            _rigidBody.AddTorque(_turnDirection * this.turnSpeed);
+        }
     }
+
+
     private void OnCollisionEnter2D(Collision2D collision) {
 
         if (collision.gameObject.tag == "Asteriod") {

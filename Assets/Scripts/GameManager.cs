@@ -28,13 +28,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public void AsteriodDestroyed(Asteriod asteriod) {
-        this.explosion.transform.position = asteriod.transform.position;
+        this.explosion.transform.localPosition = asteriod.transform.localPosition;
         this.explosion.Play();
     }
 
     public void PlayerDied() {
 
-        this.explosion.transform.position = this.player.transform.position;
+        this.explosion.transform.localPosition = this.player.transform.localPosition;
         this.explosion.Play();
         this.lives--;
         updateLivesText();
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 
     private void Respawn() {
         this.player.gameObject.layer = Layers.IgnoreCollisionsLayerId;
-        this.player.transform.position = Vector3.zero;
+        this.player.transform.localPosition = Vector3.zero;
         this.player.gameObject.SetActive(true);
         this.immortalityText.gameObject.SetActive(true);
         this.immortalityText.text = $"Immortal for {this.respawnInvulnerbilityTime} sec";
