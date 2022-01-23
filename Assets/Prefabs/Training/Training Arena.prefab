@@ -384,9 +384,9 @@ GameObject:
   - component: {fileID: 6715478029546574486}
   - component: {fileID: 6715478029546574447}
   - component: {fileID: 6715478029546574444}
-  - component: {fileID: 6715478029546574441}
   - component: {fileID: 6715478029546574446}
   - component: {fileID: 4354903550925055428}
+  - component: {fileID: 5871979900091819730}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -402,7 +402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6715478029546574487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: -3.34, z: 0}
+  m_LocalPosition: {x: -0.96, y: -0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6715478029814526193}
@@ -519,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb7abc9471a1f42aeb9bb2744c2859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustSpeed: 3
-  turnSpeed: 0.15
+  thrustSpeed: 10
+  turnSpeed: 0.3
 --- !u!114 &6715478029546574447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 3
+    VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -568,32 +568,6 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
   asteriodSpawner: {fileID: 6715478029771564900}
---- !u!114 &6715478029546574441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6715478029546574487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - Boundary
-  - Asteriod
-  m_RaysPerDirection: 4
-  m_MaxRayDegrees: 30
-  m_SphereCastRadius: 0.25
-  m_RayLength: 20
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 768
-  m_ObservationStacks: 1
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &6715478029546574446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,12 +596,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SensorName: RayPerceptionSensor2
   m_DetectableTags:
+  - Asteriod
+  - Boundary
+  m_RaysPerDirection: 4
+  m_MaxRayDegrees: 45
+  m_SphereCastRadius: 0.25
+  m_RayLength: 10
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 768
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &5871979900091819730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715478029546574487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor Boundarys
+  m_DetectableTags:
   - Boundary
   - Asteriod
-  m_RaysPerDirection: 6
+  m_RaysPerDirection: 10
   m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.25
-  m_RayLength: 4
+  m_RayLength: 15
   m_RayLayerMask:
     serializedVersion: 2
     m_Bits: 768
@@ -682,8 +682,8 @@ MonoBehaviour:
   - {fileID: 424006542280166723, guid: 1afab855189a60c4a935885a6f29cd85, type: 3}
   - {fileID: 424006542280166723, guid: 04760dac56610da499269871da1a89dd, type: 3}
   - {fileID: 424006542280166723, guid: 475798957296a824cb39ea4eb0fee71f, type: 3}
-  trajectoryVariance: 15
-  spawnRate: 2
+  trajectoryVariance: 10
+  spawnRate: 5
   spawnDistance: 15
   spawnAmount: 1
   playerLocation: {fileID: 6715478029546574445}
@@ -1452,7 +1452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047684, guid: fe011c14c033d954d98cb9441e4bd2dd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047704, guid: fe011c14c033d954d98cb9441e4bd2dd, type: 3}
       propertyPath: m_RootOrder
@@ -1522,7 +1522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047684, guid: b8abfb71af49e784f8d2d7247b846960, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5004300795626047704, guid: b8abfb71af49e784f8d2d7247b846960, type: 3}
       propertyPath: m_RootOrder

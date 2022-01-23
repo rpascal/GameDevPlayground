@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private bool _thrusting;
 
+    public bool Thrusting {
+        get {
+            return _thrusting;
+        }
+    }
+
     private float _turnDirection;
     public float TurnDirection {
         get {
@@ -58,9 +64,24 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void setThrusting(float value) {
+
         _thrusting = value > 0.0f;
     }
 
+
+    public void doThrust(float value) {
+        if (value > 0.0f) {
+            _rigidBody.AddForce(this.transform.up * this.thrustSpeed);
+        }
+    }
+
+    public void doTurn(float value) {
+        if (value < 0) {
+            _rigidBody.AddTorque(this.turnSpeed);
+        } else if (value > 0) {
+            _rigidBody.AddTorque(-this.turnSpeed);
+        }
+    }
 
 
 
