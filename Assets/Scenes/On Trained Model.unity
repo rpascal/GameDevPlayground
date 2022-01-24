@@ -133,10 +133,10 @@ PrefabInstance:
     - target: {fileID: 6715478029546574447, guid: a08f1fcf9a2614549bb866e2983b33fa, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 074c1719507ee744eaee63493eefdad9, type: 3}
+      objectReference: {fileID: 5022602860645237092, guid: 010be2e8ca5011e49b822e3757be8d57, type: 3}
     - target: {fileID: 6715478029546574447, guid: a08f1fcf9a2614549bb866e2983b33fa, type: 3}
       propertyPath: m_BehaviorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6715478029771564900, guid: a08f1fcf9a2614549bb866e2983b33fa, type: 3}
       propertyPath: spawnRate

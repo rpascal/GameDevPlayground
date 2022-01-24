@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6715478029376457699}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 21, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6715478030284127546}
@@ -519,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb7abc9471a1f42aeb9bb2744c2859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustSpeed: 10
-  turnSpeed: 0.3
+  thrustSpeed: 7
+  turnSpeed: 0.15
 --- !u!114 &6715478029546574447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_DetectableTags:
   - Asteriod
   - Boundary
-  m_RaysPerDirection: 4
+  m_RaysPerDirection: 3
   m_MaxRayDegrees: 45
   m_SphereCastRadius: 0.25
   m_RayLength: 10
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_DetectableTags:
   - Boundary
   - Asteriod
-  m_RaysPerDirection: 10
+  m_RaysPerDirection: 15
   m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.25
   m_RayLength: 15
@@ -1036,7 +1036,7 @@ Transform:
   m_GameObject: {fileID: 6715478030561240599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 6715478030284127546}
   m_RootOrder: 0
@@ -1145,7 +1145,7 @@ Transform:
   m_GameObject: {fileID: 6715478030624534107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 6715478030284127546}
   m_RootOrder: 1
@@ -1253,7 +1253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6715478031373676264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 21, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6715478030284127546}

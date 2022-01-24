@@ -32,32 +32,28 @@ namespace Assets.Scripts.Player {
 
         public override void OnEpisodeBegin() {
 
-            asteriodSpawner.ResetForGameOver(
+            asteriodSpawner.ResetForNewEpisode(
               m_ResetParams.GetWithDefault("asteriod_spawn_rate", 5.0f),
                  m_ResetParams.GetWithDefault("asteriod_max_size", 1.5f),
                   m_ResetParams.GetWithDefault("asteriod_min_size", 0.5f)
             );
             this.transform.localPosition = new Vector3(
                 Random.Range(-8f, 8f),
-                 Random.Range(-3f, 3f),
+                Random.Range(-3f, 3f),
                 0
             );
 
             hits = 0;
             borderStays = 0f;
 
-            rBody.velocity = Vector2.zero;
-            rBody.angularVelocity = 0f;
-            playerMovement.setThrusting(0f);
-            playerMovement.TurnDirection = 0f;
+            stopPlayer();
 
             Vector3 euler = transform.eulerAngles;
             euler.z = Random.Range(0f, 360f);
             transform.eulerAngles = euler;
 
             allowedHits = m_ResetParams.GetWithDefault("allowed_asteriod_hits", 10.0f);
-            allowedStayOnBorder =  m_ResetParams.GetWithDefault("allowed_boundary_hits", 25.0f);
-
+            allowedStayOnBorder = m_ResetParams.GetWithDefault("allowed_boundary_hits", 25.0f);
         }
 
         public override void CollectObservations(VectorSensor sensor) {
@@ -70,9 +66,6 @@ namespace Assets.Scripts.Player {
         public override void OnActionReceived(ActionBuffers actionBuffers) {
             AddReward(1f / MaxStep);
 
-            if (StepCount % 1000 == 0) {
-                AddReward(.2f);
-            }
             playerMovement.setThrusting(actionBuffers.ContinuousActions[0]);
             playerMovement.TurnDirection = actionBuffers.ContinuousActions[1];
         }
@@ -105,12 +98,7 @@ namespace Assets.Scripts.Player {
                 AddReward(-.25f);
             } else if (Tags.hasTag(collision, Tags.AsteriodTag)) {
                 Destroy(collision.gameObject);
-
-                rBody.velocity = Vector2.zero;
-                rBody.angularVelocity = 0f;
-                playerMovement.setThrusting(0f);
-                playerMovement.TurnDirection = 0f;
-
+                stopPlayer();
                 AddReward(-1f / allowedHits);
                 hits++;
                 if (hits >= allowedHits) {
@@ -138,5 +126,11 @@ namespace Assets.Scripts.Player {
             }
         }
 
+        private void stopPlayer() {
+            rBody.velocity = Vector2.zero;
+            rBody.angularVelocity = 0f;
+            playerMovement.setThrusting(0f);
+            playerMovement.TurnDirection = 0f;
+        }
     }
 }

@@ -18,9 +18,8 @@ public class AsteriodSpawner : MonoBehaviour {
 
 
     private float maxSize = 1.5f;
-     private float minSize = 0.5f;
+    private float minSize = 0.5f;
 
-    // Start is called before the first frame update
     void Start() {
         InvokeRepeating(nameof(Spawn), 0, this.spawnRate);
     }
@@ -34,11 +33,9 @@ public class AsteriodSpawner : MonoBehaviour {
 
             float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
-            //Quaternion rotation = Quaternion.AngleAxis(0, Vector3.forward);
 
             Asteriod asteriod = Instantiate(randomAsteriodPrefab(), spawnPoint, rotation);
-            //asteriod.size = 1.25f;//asteriod.maxSize; // Random size
-            asteriod.size = Random.Range(minSize, maxSize); // Random size
+            asteriod.size = Random.Range(minSize, maxSize);
             asteriod.setTrajectory(rotation * -spawnDirection);
             spawned.Add(asteriod);
 
@@ -47,7 +44,6 @@ public class AsteriodSpawner : MonoBehaviour {
     }
 
     private Asteriod randomAsteriodPrefab() {
-        //return asteriodPrefabs[0];
         return asteriodPrefabs[Random.Range(0, asteriodPrefabs.Length)];
     }
 
@@ -64,23 +60,10 @@ public class AsteriodSpawner : MonoBehaviour {
         //}
     }
 
-    public void ResetForGameOver(
-        float spawnRate,
-        float maxSize,
-        float minSize
-        ) {
+    public void ResetForNewEpisode(float spawnRate, float maxSize, float minSize) {
         CancelInvoke(nameof(Spawn));
         this.maxSize = maxSize;
         this.minSize = minSize;
-
-        //print($"Spawn rate: {spawnRate} maxSize: {maxSize} minSize: {minSize}");
-
-
-        _resetting = true;
-        //GameObject[] asteriods = GameObject.FindGameObjectsWithTag(Tags.AsteriodTag);
-        //for (int i = 0; i < asteriods.Length; i++) {
-        //    Destroy(asteriods[i]);
-        //}
 
         List<Asteriod> clonedList = new List<Asteriod>(spawned);
 
@@ -90,12 +73,9 @@ public class AsteriodSpawner : MonoBehaviour {
                 spawned.Remove(spawn);
             }
         }
-        //spawned.Clear();
-        _resetting = false;
+
 
         InvokeRepeating(nameof(Spawn), 0, spawnRate);
-
-
     }
 
 

@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void setThrusting(float value) {
-
         _thrusting = value > 0.0f;
     }
 
