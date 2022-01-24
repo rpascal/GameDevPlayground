@@ -42,6 +42,9 @@ namespace Assets.Scripts.Projectiles {
                 );
                 Destroy(this.gameObject);
             }
+            if (Tags.hasTag(collision, Tags.BoundaryTag)) {
+                Destroy(this.gameObject, Time.deltaTime);
+            }
         }
 
         protected void Reset() {

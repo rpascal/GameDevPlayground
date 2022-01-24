@@ -11,7 +11,7 @@ public class Asteriod : MonoBehaviour, IDamageable {
     public Sprite[] sprites;
     public float minSize = 0.5f;
     public float maxSize = 1.5f;
-    public float speed = 50.0f;
+    public float speed = 25.0f;
     public float maxLifetime = 30.0f;
     float _maxHealth = 5;
     public float maxHealth => _maxHealth;
